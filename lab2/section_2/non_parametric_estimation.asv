@@ -1,0 +1,12 @@
+function output_pdf = non_parametric_estimation(data, x, std_dev)
+
+output_pdf = zeros(size(x)); 
+
+for i = 1:length(x)
+    current_std_dev = repmat(std_dev, size(data));
+    current_x = repmat(x(i), size(data));
+    output_pdf(i) = (1/(length(data) *std_dev))*sum(normpdf(current_x, data, current_std_dev));
+end
+
+end
+
